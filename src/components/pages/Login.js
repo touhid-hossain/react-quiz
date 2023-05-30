@@ -1,7 +1,8 @@
-import Illustration from "../Illustration";
-import LoginForm from "../LoginForm";
+import React from 'react'
+import Illustration from '../Illustration'
+import LoginForm from '../LoginForm'
 
-export default function Signup() {
+const Login = () => {
   return (
     <>
       <h1>Login to your account</h1>
@@ -11,5 +12,7 @@ export default function Signup() {
         <LoginForm />
       </div>
     </>
-  );
+  )
 }
+
+export default Login

@@ -11,6 +11,18 @@
   transition: right 0.4s ease;
 }
 
+.miniPlayer img {
+  width: 300px;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  animation: miniplayerAnim 0.3s ease forwards;
+}
+
+.floatingBtn img {
+  transform: scale(0);
+  display: none;
+}
+
 .miniPlayer .player {
   width: 300px;
   animation: miniplayerAnim 0.3s ease forwards;

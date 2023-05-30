@@ -1,38 +1,37 @@
-import { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import Button from "./Button";
-import Checkbox from "./Checkbox";
+import React, { useState } from "react";
 import Form from "./Form";
 import TextInput from "./TextInput";
+import Checkbox from "./Checkbox";
+import Button from "./Button";
+import { Link, useHistory } from "react-router-dom";
+import { useAuth } from "./contexts/AuthContext";
 
-export default function SignupForm() {
-  const [username, setUsername] = useState("");
+const SignupForm = () => {
+  const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [agree, setAgree] = useState("");
 
-  const [error, setError] = useState();
-  const [loading, setLoading] = useState();
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const { signup } = useAuth();
   const history = useHistory();
+  const { signup } = useAuth();
 
+  // SignUp functionality
   async function handleSubmit(e) {
     e.preventDefault();
-    // do validation
     if (password !== confirmPassword) {
-      return setError("Passwords don't match!");
+      return setError("Password doesn't match!");
     }
-
     try {
       setError("");
       setLoading(true);
       await signup(email, password, username);
       history.push("/");
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
       setLoading(false);
       setError("Failed to create an account!");
     }
@@ -46,52 +45,44 @@ export default function SignupForm() {
         icon="person"
         required
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        onChange={(e) => setUserName(e.target.value)}
       />
-
       <TextInput
         type="text"
-        required
         placeholder="Enter email"
         icon="alternate_email"
+        required
         value={email}
         onChange={(e) => setEmail(e.target.value)}
       />
-
       <TextInput
         type="password"
-        required
         placeholder="Enter password"
+        required
         icon="lock"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
       />
-
       <TextInput
         type="password"
-        required
         placeholder="Confirm password"
+        required
         icon="lock_clock"
         value={confirmPassword}
         onChange={(e) => setConfirmPassword(e.target.value)}
       />
+      <Checkbox required text="I agree to the Terms &amp; Conditions" />
 
-      <Checkbox
-        required
-        text="I agree to the Terms &amp; Conditions"
-        value={agree}
-        onChange={(e) => setAgree(e.target.value)}
-      />
-
-      <Button disabled={loading} type="submit">
+      <Button disabled={loading}>
         <span>Submit Now</span>
       </Button>
 
       {error && <p className="error">{error}</p>}
-
-      <div className="info">
+      <div class="info">
         Already have an account? <Link to="/login">Login</Link> instead.
       </div>
     </Form>
   );
-}
+};
+
+export default SignupForm;

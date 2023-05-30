@@ -1,11 +1,15 @@
+import React from "react";
 import classes from "../styles/Analysis.module.css";
-import Questions from "./Questions";
+import Question from "./Question";
 
-export default function Analysis({ answers }) {
+const Analysis = () => {
   return (
-    <div className={classes.analysis}>
+    <div class={classes.analysis}>
       <h1>Question Analysis</h1>
-      <Questions answers={answers} />
+      <h4>You answerd 5 out of 10 questions correctly</h4>
+        <Question/>
     </div>
   );
-}
+};
+
+export default Analysis;

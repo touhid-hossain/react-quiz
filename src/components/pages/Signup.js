@@ -1,7 +1,8 @@
+import React from "react";
 import Illustration from "../Illustration";
 import SignupForm from "../SignupForm";
 
-export default function Signup() {
+const Signup = () => {
   return (
     <>
       <h1>Create an account</h1>
@@ -12,4 +13,6 @@ export default function Signup() {
       </div>
     </>
   );
-}
+};
+
+export default Signup;
