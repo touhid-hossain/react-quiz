@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Form from "./Form";
 import TextInput from "./TextInput";
 import Button from "./Button";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
 
 const LoginForm = () => {
@@ -12,7 +12,7 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const history = useHistory();
+  const history = useNavigate();
   const { login } = useAuth();
 
   // login functionality

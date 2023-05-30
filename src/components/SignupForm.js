@@ -3,7 +3,7 @@ import Form from "./Form";
 import TextInput from "./TextInput";
 import Checkbox from "./Checkbox";
 import Button from "./Button";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "./contexts/AuthContext";
 
 const SignupForm = () => {
@@ -16,7 +16,7 @@ const SignupForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const history = useHistory();
+  const history = useNavigate();
   const { signup } = useAuth();
 
   // SignUp functionality

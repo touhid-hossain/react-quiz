@@ -1,13 +1,13 @@
 import React from "react";
 import { useAuth } from "./contexts/AuthContext";
-import { Route, Redirect } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 
-const PublicRoute = ({ component: Component, ...rest }) => {
+const PublicRoute = ({ element: Component, ...rest }) => {
   const { currentUser } = useAuth();
   return !currentUser ? (
-    <Route {...rest}> {(props) => <Component {...props} />} </Route>
+    <Outlet {...rest}> {(props) => <Component {...props} />} </Outlet>
   ) : (
-    <Redirect to="/login" />
+    <Navigate to="/login" />
   );
 };
 
