@@ -1,9 +1,9 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import Button from "./Button";
 import Form from "./Form";
 import TextInput from "./TextInput";
-import Button from "./Button";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./contexts/AuthContext";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ const LoginForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const history = useNavigate();
+  const navigate = useNavigate();
   const { login } = useAuth();
 
   // login functionality
@@ -23,7 +23,7 @@ const LoginForm = () => {
       setError("");
       setLoading(true);
       await login(email, password);
-      history.push("/");
+      navigate("/");
     } catch (error) {
       console.log(error);
       setLoading(false);

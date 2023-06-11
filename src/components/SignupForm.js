@@ -1,10 +1,10 @@
 import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
+import Button from "./Button";
+import Checkbox from "./Checkbox";
 import Form from "./Form";
 import TextInput from "./TextInput";
-import Checkbox from "./Checkbox";
-import Button from "./Button";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "./contexts/AuthContext";
 
 const SignupForm = () => {
   const [username, setUserName] = useState("");
